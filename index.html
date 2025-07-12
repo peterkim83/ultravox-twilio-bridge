@@ -232,20 +232,19 @@
             }
         }
 
-        // Pie Socket 연결
-        function initializePieSocket() {
-            if (!validateConfig()) return;
-            
-            log('Pie Socket 연결 시작...', 'info');
-            updateConnectionStatus('pieSocket', false, '연결 중...');
-            
-            const wsUrl = `${CONFIG.ENDPOINT}${CONFIG.CHANNEL_ID}?api_key=${CONFIG.API_KEY}`;
-            pieSocket = new WebSocket(wsUrl);
-            
-            pieSocket.onopen = function() {
-                log('✅ Pie Socket 연결 성공', 'success');
-                updateConnectionStatus('pieSocket', true);
-            };
+ // 올바른 웹소켓 연결
+function initializePieSocket() {
+    log('Pie Socket 연결 시작...', 'info');
+    updateConnectionStatus('pieSocket', false, '연결 중...');
+    
+    const wsUrl = `wss://s14927.nyc1.piesocket.com/v3/1?api_key=qXA06KzSmWOcwJLzvXZmVVugaoKdvvxIf2ibv2Ge&notify_self=1`;
+    
+    pieSocket = new WebSocket(wsUrl);
+    
+    pieSocket.onopen = function() {
+        log('✅ Pie Socket 연결 성공', 'success');
+        updateConnectionStatus('pieSocket', true);
+    };
             
             pieSocket.onclose = function(event) {
                 log(`❌ Pie Socket 연결 끊김 (코드: ${event.code})`, 'error');
