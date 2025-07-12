@@ -1,8 +1,9 @@
 const CONFIG = {
-    API_KEY: 'qXA06KzSmWOcwJLzvXZmVVugaoKdvvxIf2ibv2Ge', // Example에서 제공된 키
-    CLUSTER_ID: 's14927',
-    REGION: 'nyc1',
-    CHANNEL_ID: 'ultravox', // 실제 채널 ID (숫자일 가능성)
+    API_KEY: 'qXA06KzSmWOcwJLzvXZmVVugaoKdvvxIf2ibv2Ge',
+    API_SECRET: 'Dk43nGkByA57W28owcEHEpGqnh6aJNOt',
+    API_ID: '19573',
+    CLUSTER_ID: 's14927.nyc1',
+    CHANNEL_ID: '1',  // 숫자 채널 ID 사용
     ENDPOINT: 'wss://s14927.nyc1.piesocket.com/v3/',
     
     DEBUG: true,
@@ -10,7 +11,5 @@ const CONFIG = {
     MAX_RECONNECT_ATTEMPTS: 10
 };
 
-// 웹소켓 연결 URL 생성
-function buildWebSocketUrl() {
-    return `${CONFIG.ENDPOINT}${CONFIG.CHANNEL_ID}?api_key=${CONFIG.API_KEY}&notify_self=1`;
-}
+// 웹소켓 연결 URL (Example URL 기준)
+const wsUrl = `wss://s14927.nyc1.piesocket.com/v3/1?api_key=${CONFIG.API_KEY}&notify_self=1`;
